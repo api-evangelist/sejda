@@ -1,0 +1,94 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Sejda
+providerId: sejda
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- PDF
+- HTML to PDF
+- Document Conversion
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Sejda spend. Unlike usage-metered API platforms, Sejda's HTML
+  to PDF API is billed as a flat monthly subscription per tier (capped by
+  requests-per-hour and concurrency, not by document count), with a flat-fee
+  self-hosted option. The web/desktop PDF apps are billed as flat per-user
+  subscriptions (week pass, monthly, annual). The open-source SDK/console carry
+  no charge under AGPLv3. Cost optimization is therefore about right-sizing the
+  subscription tier to peak request rate and concurrency rather than minimizing
+  per-call usage.
+notes: >-
+  Subscription prices and tier limits are subject to change; verify against the
+  Sejda developer and pricing pages during reconciliation.
+sources:
+- https://www.sejda.com/developers
+- https://www.sejda.com/html-pdf-api
+- https://www.sejda.com/pricing
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Sejda
+serviceCategory: Document Management
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+meters:
+- name: api_subscription
+  description: Flat monthly HTML-to-PDF API subscription fee per tier.
+  unit: subscription
+  aggregation: max
+  dimensions:
+  - account
+  - tier
+- name: api_requests_per_hour
+  description: Requests-per-hour ceiling defining the tier; not billed per call but constrains throughput.
+  unit: requests
+  aggregation: max
+  dimensions:
+  - account
+  - tier
+- name: api_concurrency
+  description: Concurrent-request ceiling defining the tier.
+  unit: concurrency
+  aggregation: max
+  dimensions:
+  - account
+  - tier
+- name: self_hosted_subscription
+  description: Flat monthly self-hosted HTML-to-PDF deployment fee with no per-hour limit.
+  unit: subscription
+  aggregation: max
+  dimensions:
+  - account
+- name: app_user_subscription
+  description: Per-user web/desktop app subscription (week pass, monthly, or annual).
+  unit: seats
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track which API tier and how many app seats are active; map flat subscription charges to teams.
+- name: Allocation
+  description: Tag the API subscription and app seats to the workloads/users that consume them.
+- name: Optimization
+  description: Right-size the API tier to actual peak requests-per-hour and concurrency; consider self-hosting at high volume; use the AGPLv3 SDK/console where a hosted API is not required.
+- name: Accountability
+  description: Review subscription tier vs. observed throughput and seat utilization each renewal period.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

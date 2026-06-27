@@ -1,0 +1,137 @@
+openapi: 3.0.1
+info:
+  title: Sejda HTML to PDF API
+  description: >-
+    The Sejda HTML to PDF API converts a web page URL or a raw HTML string into a
+    PDF document. It is the only documented hosted REST API offered by Sejda; Sejda
+    states it does not provide hosted API access to its other PDF tools (merge,
+    compress, etc.). Requests are authenticated with a secret Token API key, or a
+    publishable key for browser-side use with a configured allowed-domains list.
+  termsOfService: https://www.sejda.com/terms-of-service
+  contact:
+    name: Sejda Support
+    url: https://www.sejda.com/help
+  version: '2'
+servers:
+  - url: https://api.sejda.com/v2
+    description: Sejda API v2
+paths:
+  /html-pdf:
+    post:
+      operationId: htmlToPdf
+      tags:
+        - HTML to PDF
+      summary: Convert a URL or HTML to a PDF document.
+      description: >-
+        Renders the supplied URL or raw HTML and returns the generated PDF as a
+        binary stream. Provide either `url` or `htmlCode`. Some parameters are
+        Pro-only and return HTTP 450 on free accounts. The generated PDF must be
+        smaller than 50MB.
+      security:
+        - TokenAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HtmlToPdfRequest'
+            examples:
+              fromUrl:
+                summary: Convert a URL
+                value:
+                  url: https://example.com
+                  pageSize: a4
+                  pageOrientation: auto
+              fromHtml:
+                summary: Convert raw HTML
+                value:
+                  htmlCode: '<html><body><h1>Hello</h1></body></html>'
+                  pageSize: a4
+      responses:
+        '200':
+          description: OK - the generated PDF document stream.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid request.
+        '403':
+          description: Authorization failure or CORS / allowed-domain restriction.
+        '413':
+          description: Payload exceeds the 50MB limit.
+        '429':
+          description: Rate limit exceeded (requests-per-hour or concurrency).
+        '450':
+          description: A Pro-only parameter was used on a free account.
+        '500':
+          description: Server error - retry recommended.
+        '550':
+          description: Conversion failed (page unreachable or could not be loaded).
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Secret API key sent as `Authorization: Token: api_YOURAPIKEYHERE`. A
+        publishable key (`api_public_...`) may be used for browser-side requests
+        when the calling domain is on the account's allowed-domains list.
+  schemas:
+    HtmlToPdfRequest:
+      type: object
+      description: >-
+        HTML-to-PDF conversion request. Supply either `url` or `htmlCode`.
+        Pro-only fields are noted in their descriptions.
+      properties:
+        url:
+          type: string
+          format: uri
+          description: URL of the web page to render to PDF.
+        htmlCode:
+          type: string
+          description: Raw HTML to render to PDF (alternative to `url`).
+        viewportWidth:
+          type: integer
+          description: Browser viewport width in pixels used while rendering.
+        pageSize:
+          type: string
+          description: Output page size (e.g. a4, letter).
+        pageOrientation:
+          type: string
+          description: Page orientation - auto, portrait, or landscape.
+        pageMargin:
+          type: number
+          description: Page margin value.
+        pageMarginUnits:
+          type: string
+          description: Units for the page margin (e.g. px, mm, in).
+        hideNotices:
+          type: boolean
+          description: Hide notice elements when rendering.
+        usePrintMedia:
+          type: boolean
+          description: Render using print media CSS rules.
+        delay:
+          type: integer
+          description: Delay in milliseconds before capturing the page.
+        scrollPage:
+          type: boolean
+          description: Scroll the page to trigger lazy-loaded content before rendering.
+        authUsername:
+          type: string
+          description: HTTP basic auth username for protected source pages (Pro).
+        authPassword:
+          type: string
+          description: HTTP basic auth password for protected source pages (Pro).
+        waitForSelector:
+          type: string
+          description: Wait until a CSS selector is present before rendering (Pro).
+        timezone:
+          type: string
+          description: Timezone used while rendering (e.g. America/New_York).
+        lang:
+          type: string
+          description: Language hint for rendering (e.g. en).

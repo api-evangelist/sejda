@@ -1,0 +1,211 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Sejda
+providerId: sejda
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- PDF
+- HTML to PDF
+- Document Conversion
+- Plans
+description: >-
+  Sejda has two distinct commercial lines. (1) The HTML to PDF API is sold on
+  monthly tiers gated by requests-per-hour and concurrent-request limits, with a
+  self-hosted option; Sejda does not meter or cap the total number of PDFs
+  generated. (2) The Sejda web/desktop apps for the broader PDF toolset (merge,
+  split, compress, OCR, edit) are sold separately as Web Week Pass, Web Monthly,
+  and Desktop+Web Annual subscriptions; a no-signup Free tier applies page,
+  hourly, and per-tool limits. The open-source Sejda SDK / sejda-console are free
+  under AGPLv3, with a separate commercial Pro license.
+notes: >-
+  HTML to PDF API tier prices and limits below were read from the Sejda
+  developer / html-pdf-api pages and may change; verify on the Sejda account and
+  pricing pages during reconciliation. App-subscription prices are per user.
+sources:
+- https://www.sejda.com/developers
+- https://www.sejda.com/html-pdf-api
+- https://www.sejda.com/pricing
+- https://sejda.org/
+plans:
+- id: sejda-api-starter
+  name: HTML to PDF API - Starter
+  type: subscription
+  description: >-
+    Entry HTML-to-PDF API tier. Unlimited PDFs; capped by requests-per-hour and
+    concurrent requests.
+  entries:
+  - label: API Subscription
+    name: api_starter
+    type: flat
+    metric: subscription
+    limit: 200
+    timeFrame: hour
+    geo: global
+    unit: 1
+    price: $12/month (200 requests/hour, 3 concurrent)
+    userMultiplied: false
+  elements:
+  - name: HTML to PDF API
+- id: sejda-api-professional
+  name: HTML to PDF API - Professional
+  type: subscription
+  description: Mid HTML-to-PDF API tier with higher hourly and concurrency limits.
+  entries:
+  - label: API Subscription
+    name: api_professional
+    type: flat
+    metric: subscription
+    limit: 300
+    timeFrame: hour
+    geo: global
+    unit: 1
+    price: $24/month (300 requests/hour, 4 concurrent)
+    userMultiplied: false
+  elements:
+  - name: HTML to PDF API
+- id: sejda-api-business
+  name: HTML to PDF API - Business
+  type: subscription
+  description: Higher-volume HTML-to-PDF API tier.
+  entries:
+  - label: API Subscription
+    name: api_business
+    type: flat
+    metric: subscription
+    limit: 600
+    timeFrame: hour
+    geo: global
+    unit: 1
+    price: $48/month (600 requests/hour, 5 concurrent)
+    userMultiplied: false
+  elements:
+  - name: HTML to PDF API
+- id: sejda-api-enterprise
+  name: HTML to PDF API - Enterprise
+  type: subscription
+  description: >-
+    Top HTML-to-PDF API tiers with the highest hourly and concurrency limits.
+    A self-hosted deployment option is also available with no request-per-hour
+    restriction.
+  entries:
+  - label: API Subscription
+    name: api_enterprise
+    type: flat
+    metric: subscription
+    limit: 1200
+    timeFrame: hour
+    geo: global
+    unit: 1
+    price: $96-$768/month (1,200+ requests/hour, 6-48 concurrent)
+    userMultiplied: false
+  - label: Self-Hosted
+    name: api_self_hosted
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from $384/month (no requests-per-hour restriction)
+    userMultiplied: false
+  elements:
+  - name: HTML to PDF API
+  - name: Self-Hosted Deployment
+- id: sejda-app-free
+  name: Sejda Apps - Free
+  type: free
+  description: >-
+    No-signup free access to the web PDF tools with page limits, hourly limits,
+    limited file uploads, and per-tool limits.
+  entries:
+  - label: Free
+    name: app_free
+    type: flat
+    metric: subscription
+    limit: 0
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0 (page/hourly/per-tool limits)
+    userMultiplied: false
+  elements:
+  - name: Web PDF Tools (limited)
+- id: sejda-app-week-pass
+  name: Sejda Apps - Web Week Pass
+  type: subscription
+  description: One-time 7-day pass to the browser-based PDF tools (no desktop).
+  entries:
+  - label: Week Pass
+    name: app_week_pass
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: week
+    geo: global
+    unit: 1
+    price: $5 per user (7 days; 20% off for 10+ users)
+    userMultiplied: true
+  elements:
+  - name: Web PDF Tools
+- id: sejda-app-web-monthly
+  name: Sejda Apps - Web Monthly
+  type: subscription
+  description: Recurring monthly access to the browser-based PDF tools (no desktop).
+  entries:
+  - label: Web Monthly
+    name: app_web_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $7.50 per user/month (20% off for 10+ users)
+    userMultiplied: true
+  elements:
+  - name: Web PDF Tools
+- id: sejda-app-desktop-annual
+  name: Sejda Apps - Desktop+Web Annual
+  type: subscription
+  description: Recurring annual access to both web and desktop PDF applications.
+  entries:
+  - label: Desktop+Web Annual
+    name: app_desktop_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: $63 per user/year (20% off for 10+ users)
+    userMultiplied: true
+  elements:
+  - name: Web PDF Tools
+  - name: Desktop PDF Tools
+- id: sejda-sdk-oss
+  name: Sejda SDK / Console - Open Source
+  type: free
+  description: >-
+    Open-source Sejda SDK and sejda-console under the AGPLv3 license, free for
+    projects complying with AGPLv3. A separate commercial Pro license is offered
+    for non-AGPL use (contact Sejda).
+  entries:
+  - label: AGPLv3
+    name: sdk_agpl
+    type: flat
+    metric: license
+    limit: -1
+    timeFrame: perpetual
+    geo: global
+    unit: 1
+    price: free under AGPLv3 (commercial Pro license priced separately)
+    userMultiplied: false
+  elements:
+  - name: Sejda SDK
+  - name: Sejda Console
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

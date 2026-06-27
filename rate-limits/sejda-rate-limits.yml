@@ -1,0 +1,57 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Sejda
+providerId: sejda
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- PDF
+- HTML to PDF
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Sejda HTML to PDF API does not meter or cap the total number of PDFs
+  generated. Instead it limits the maximum number of requests per hour and the
+  number of concurrent (in-flight) requests, both of which scale with the
+  subscription tier. Exceeding either limit returns HTTP 429. A self-hosted
+  deployment removes the requests-per-hour restriction. Request payloads are
+  capped at 50MB (HTTP 413 when exceeded). Sejda's free web/desktop apps apply
+  separate page, hourly, and per-tool limits unrelated to the API.
+notes: >-
+  Per-tier requests-per-hour and concurrency values change; verify on the Sejda
+  developer / html-pdf-api pages during reconciliation.
+sources:
+- https://www.sejda.com/developers
+- https://www.sejda.com/html-pdf-api
+responseCodes:
+  throttled: 429
+  payloadTooLarge: 413
+limits:
+- name: Requests Per Hour
+  scope: account
+  metric: requests
+  limit: tier-based (200 / 300 / 600 / 1,200+ per hour)
+  notes: Maximum requests per hour; scales by API subscription tier. Self-hosted has no per-hour limit.
+- name: Concurrent Requests
+  scope: account
+  metric: concurrency
+  limit: tier-based (3 / 4 / 5 / 6-48 concurrent)
+  notes: Maximum simultaneous in-flight requests; scales by API subscription tier.
+- name: Payload Size
+  scope: request
+  metric: bytes
+  limit: 50MB
+  notes: Generated PDFs / request payloads must be under 50MB; HTTP 413 otherwise.
+policies:
+- name: Tiered Limits
+  description: Requests-per-hour and concurrency raise as accounts move up API subscription tiers or self-host.
+- name: No Document Metering
+  description: Sejda does not count or cap the number of PDFs generated; only request rate and concurrency are limited.
+- name: Backoff Strategy
+  description: On HTTP 429, clients should back off and retry; requests are not auto-upgraded.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

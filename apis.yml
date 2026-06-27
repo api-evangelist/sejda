@@ -1,0 +1,122 @@
+aid: sejda
+url: https://raw.githubusercontent.com/api-evangelist/sejda/refs/heads/main/apis.yml
+name: Sejda
+kind: company
+description: Sejda provides online and desktop tools for editing and manipulating
+  PDF documents - merge, split, compress, convert, edit, watermark, OCR, and fill
+  forms. Its only documented hosted REST API is the HTML-to-PDF conversion API at
+  api.sejda.com; the broader merge/split/OCR task set is delivered through the web
+  and desktop apps and through the open-source Sejda SDK and sejda-console (Java,
+  AGPLv3), not a hosted task API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- PDF
+- Document Conversion
+- HTML to PDF
+- PDF Editing
+- OCR
+created: '2026-06-25'
+modified: '2026-06-25'
+specificationVersion: '0.19'
+apis:
+- aid: sejda:sejda-html-to-pdf-api
+  name: Sejda HTML to PDF API
+  tags:
+  - HTML to PDF
+  - Conversion
+  - REST
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.sejda.com/developers
+  baseURL: https://api.sejda.com/v2
+  properties:
+  - url: https://www.sejda.com/developers
+    type: Documentation
+  - url: https://www.sejda.com/html-pdf-api
+    type: Documentation
+  - url: openapi/sejda-openapi.yml
+    type: OpenAPI
+  - url: collections/sejda.postman_collection.json
+    type: PostmanCollection
+  - url: collections/sejda.opencollection.json
+    type: OpenCollection
+  description: The only documented Sejda hosted REST API. Converts a URL or raw HTML
+    to a PDF document via POST https://api.sejda.com/v2/html-pdf with a JSON body,
+    authenticated with a Token (or publishable) API key. Sejda explicitly states it
+    does not offer hosted API access to its other PDF tools (e.g. merge, compress).
+- aid: sejda:sejda-pdf-tools
+  name: Sejda PDF Tools (Web and Desktop)
+  tags:
+  - PDF Editing
+  - Merge
+  - Split
+  - Compress
+  - Watermark
+  - OCR
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.sejda.com/
+  properties:
+  - url: https://www.sejda.com/
+    type: Documentation
+  - url: https://www.sejda.com/help
+    type: Documentation
+  description: Sejda's full PDF task catalog - merge, split, compress, convert (Office/HTML
+    to PDF, PDF to images), edit, watermark, OCR, and fill forms - delivered as online
+    (browser) and desktop applications. These tasks are NOT exposed as a hosted REST
+    API; only HTML-to-PDF has a documented API.
+- aid: sejda:sejda-sdk
+  name: Sejda SDK
+  tags:
+  - SDK
+  - Java
+  - Open Source
+  - PDF Manipulation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://sejda.org/
+  properties:
+  - url: https://sejda.org/
+    type: Documentation
+  - url: https://github.com/torakiki/sejda
+    type: SourceCode
+  - url: https://github.com/torakiki/sejda/wiki
+    type: Documentation
+  description: Open-source (AGPLv3) Java library for PDF manipulation - merge, split,
+    rotate, encrypt, watermark, and more - built on SAMBox (a maintained PDFBox fork).
+    This is an embeddable code library, not a hosted network API; a commercial Pro
+    license is available for non-AGPL use.
+- aid: sejda:sejda-console
+  name: Sejda Console
+  tags:
+  - CLI
+  - Java
+  - Open Source
+  - PDF Manipulation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://sejda.org/download
+  properties:
+  - url: https://sejda.org/download
+    type: Documentation
+  - url: https://github.com/torakiki/sejda/wiki
+    type: Documentation
+  - url: https://github.com/torakiki/sejda
+    type: SourceCode
+  description: Command-line shell over the Sejda SDK for running PDF tasks (merge,
+    split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial
+    sejda-console-pro build exists. This is a local CLI tool, not a hosted API.
+common:
+- type: GitHubOrganization
+  url: https://github.com/sejda-pdf
+- type: LinkedIn
+  url: https://www.linkedin.com/company/sejda
+- type: Website
+  url: https://www.sejda.com
+- type: Documentation
+  url: https://www.sejda.com/developers
+- type: Plans
+  url: plans/sejda-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sejda-rate-limits.yml
+- type: FinOps
+  url: finops/sejda-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

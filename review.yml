@@ -1,0 +1,101 @@
+aid: sejda
+name: Sejda
+review:
+  question: Does Sejda expose a documented hosted REST API for its full PDF toolset, or only HTML-to-PDF?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No event-driven, streaming, SSE, or WebSocket surface is documented for
+    Sejda. The HTML to PDF API is a single synchronous request/response HTTP
+    endpoint that returns a PDF stream, so no AsyncAPI document was created.
+findings:
+  summary: |
+    Sejda's only documented hosted REST API is the HTML to PDF conversion API
+    at https://api.sejda.com/v2/html-pdf. It accepts a JSON body (a `url` or
+    raw `htmlCode` plus rendering options), is authenticated with a Token
+    secret key (or a publishable key for browser use against an allowed-domain
+    list), and returns the generated PDF as a binary stream. Sejda's developer
+    documentation explicitly states it does NOT offer hosted API access to its
+    other PDF tools: "We do not offer API access to other PDF tools at the
+    moment (Eg: merge, compress, etc)."
+
+    The broader task catalog Sejda is known for - merge, split, compress,
+    convert (Office/HTML to PDF, PDF to images), edit, watermark, OCR, and fill
+    forms - is delivered through Sejda's online (browser) and desktop
+    applications, and/or through the open-source Sejda SDK and sejda-console.
+    Those are an embeddable Java library and a local command-line tool
+    (AGPLv3, with a commercial Pro license), NOT a hosted network API. The
+    canonical SDK source is github.com/torakiki/sejda (project site sejda.org).
+    The github.com/sejda-pdf organization is real but currently holds only
+    forks (pdf.js, tessdata, font-scanner, webp-imageio), not the SDK itself.
+  hostedApiVsSdk:
+    hostedApi:
+      - product: HTML to PDF API
+        baseURL: https://api.sejda.com/v2
+        endpoint: POST /html-pdf
+        auth: Token API key (secret) or publishable key (browser, allowed-domains)
+        documented: true
+        notes: Only hosted REST API. JSON in, PDF binary out. 50MB payload cap; 429 on rate/concurrency limit; 450 on Pro-only param on free account.
+    ossSdk:
+      - product: Sejda SDK
+        type: Java library (embeddable)
+        license: AGPLv3 (commercial Pro license available)
+        source: https://github.com/torakiki/sejda
+        site: https://sejda.org
+        documented: true
+        notes: PDF manipulation (merge/split/rotate/encrypt/watermark, etc.) built on SAMBox. Not a hosted API.
+      - product: Sejda Console (sejda-console)
+        type: Command-line tool
+        license: AGPLv3 (commercial sejda-console-pro available)
+        source: https://github.com/torakiki/sejda
+        documented: true
+        notes: CLI shell over the SDK for running PDF tasks locally. Not a hosted API.
+  apiAccessForOtherTools:
+    available: false
+    note: |
+      Per Sejda developer docs, merge / split / compress / OCR / edit / watermark
+      / fill-forms are NOT available via hosted API; only HTML-to-PDF is.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.sejda.com/v2
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming is documented; HTML-to-PDF is a single synchronous response.
+  endpointsConfirmedRest:
+    - POST https://api.sejda.com/v2/html-pdf
+sources:
+  - url: https://www.sejda.com/developers
+    type: Documentation
+    note: API docs - base URL https://api.sejda.com/v2, Token auth, html-pdf endpoint, and the statement that other PDF tools have no API access.
+  - url: https://www.sejda.com/html-pdf-api
+    type: Documentation
+    note: HTML to PDF API product page - endpoint, tiers (requests/hour + concurrency), 50MB cap, self-hosted option.
+  - url: https://www.sejda.com/pricing
+    type: Documentation
+    note: Web/desktop app subscription pricing (Free, Week Pass, Web Monthly, Desktop+Web Annual).
+  - url: https://sejda.org/
+    type: Documentation
+    note: Sejda SDK (open-source Java PDF library, AGPLv3) project site.
+  - url: https://github.com/torakiki/sejda
+    type: SourceCode
+    note: Canonical open-source Sejda SDK / sejda-console repository.
+  - url: https://github.com/sejda-pdf
+    type: GitHubOrganization
+    note: Real Sejda PDF GitHub org; currently holds forks only (pdf.js, tessdata, font-scanner, webp-imageio).
+actions:
+  apisYmlUpdated: true
+  reason: |
+    Modeled the hosted HTML to PDF API as the one real network API, and
+    represented the full PDF toolset, the Sejda SDK, and the Sejda Console as
+    distinct non-hosted entries with descriptions making the hosted-vs-OSS
+    distinction explicit. No fabricated endpoints were added for merge/split/
+    OCR/etc. because Sejda documents no hosted API for them.

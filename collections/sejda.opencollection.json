@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sejda HTML to PDF API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "Token: {{apiKey}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTML to PDF",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert a URL to a PDF document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sejda.com/v2/html-pdf",
+            "body": {
+              "type": "json",
+              "data": "{\"url\":\"https://example.com\",\"pageSize\":\"a4\",\"pageOrientation\":\"auto\"}"
+            }
+          },
+          "docs": "Render a web page URL to a PDF document. Returns the PDF as a binary stream."
+        },
+        {
+          "info": {
+            "name": "Convert raw HTML to a PDF document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sejda.com/v2/html-pdf",
+            "body": {
+              "type": "json",
+              "data": "{\"htmlCode\":\"<html><body><h1>Hello</h1></body></html>\",\"pageSize\":\"a4\"}"
+            }
+          },
+          "docs": "Render raw HTML to a PDF document. Returns the PDF as a binary stream."
+        }
+      ]
+    }
+  ]
+}
