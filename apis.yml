@@ -103,6 +103,12 @@ apis:
     split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial
     sejda-console-pro build exists. This is a local CLI tool, not a hosted API.
 common:
+- type: VulnerabilityDisclosure
+  url: security/sejda-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/sejda-domain-security.yml
+- type: Authentication
+  url: authentication/sejda-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/sejda-pdf
 - type: LinkedIn
@@ -117,6 +123,8 @@ common:
   url: rate-limits/sejda-rate-limits.yml
 - type: FinOps
   url: finops/sejda-finops.yml
+- type: Blog
+  url: https://www.sejda.com/blog/rss
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

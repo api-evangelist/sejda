@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.sejda.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  9 14:24:27 2026 GMT
+  hsts: false
+- host: api.sejda.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 19:07:29 2026 GMT
+  hsts: null
+- host: sejda.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 24 12:16:23 2026 GMT
+  hsts: false
+domains:
+- domain: sejda.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: sejda.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

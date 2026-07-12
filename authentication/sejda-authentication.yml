@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sejda-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: TokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Secret API key sent as `Authorization: Token: api_YOURAPIKEYHERE`. A publishable
+    key (`api_public_...`) may be used for browser-side requests when the calling domain is
+    on the account''s allowed-domains list.'
+  sources:
+  - openapi/sejda-openapi.yml
