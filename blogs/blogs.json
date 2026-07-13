@@ -1,0 +1,14 @@
+{
+  "repo": "sejda",
+  "feeds": [
+    {
+      "source": "https://www.sejda.com/blog/rss",
+      "feed_url": "https://www.sejda.com/blog/rss",
+      "title": "The Sejda PDF Blog",
+      "saved": 0,
+      "error": "parse_failed"
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 20
+}
