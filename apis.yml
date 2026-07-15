@@ -103,6 +103,8 @@ apis:
     split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial
     sejda-console-pro build exists. This is a local CLI tool, not a hosted API.
 common:
+- type: AgenticAccess
+  url: agentic-access/sejda-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/sejda-vulnerability-disclosure.yml
 - type: DomainSecurity
