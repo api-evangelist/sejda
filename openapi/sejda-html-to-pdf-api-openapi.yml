@@ -1,34 +1,27 @@
 openapi: 3.0.1
 info:
   title: Sejda HTML to PDF API
-  description: >-
-    The Sejda HTML to PDF API converts a web page URL or a raw HTML string into a
-    PDF document. It is the only documented hosted REST API offered by Sejda; Sejda
-    states it does not provide hosted API access to its other PDF tools (merge,
-    compress, etc.). Requests are authenticated with a secret Token API key, or a
-    publishable key for browser-side use with a configured allowed-domains list.
+  description: The Sejda HTML to PDF API converts a web page URL or a raw HTML string into a PDF document. It is the only documented hosted REST API offered by Sejda; Sejda states it does not provide hosted API access to its other PDF tools (merge, compress, etc.). Requests are authenticated with a secret Token API key, or a publishable key for browser-side use with a configured allowed-domains list.
   termsOfService: https://www.sejda.com/terms-of-service
   contact:
     name: Sejda Support
     url: https://www.sejda.com/help
   version: '2'
 servers:
-  - url: https://api.sejda.com/v2
-    description: Sejda API v2
+- url: https://api.sejda.com/v2
+  description: Sejda API v2
+tags:
+- name: HTML to PDF
 paths:
   /html-pdf:
     post:
       operationId: htmlToPdf
       tags:
-        - HTML to PDF
+      - HTML to PDF
       summary: Convert a URL or HTML to a PDF document.
-      description: >-
-        Renders the supplied URL or raw HTML and returns the generated PDF as a
-        binary stream. Provide either `url` or `htmlCode`. Some parameters are
-        Pro-only and return HTTP 450 on free accounts. The generated PDF must be
-        smaller than 50MB.
+      description: Renders the supplied URL or raw HTML and returns the generated PDF as a binary stream. Provide either `url` or `htmlCode`. Some parameters are Pro-only and return HTTP 450 on free accounts. The generated PDF must be smaller than 50MB.
       security:
-        - TokenAuth: []
+      - TokenAuth: []
       requestBody:
         required: true
         content:
@@ -45,7 +38,7 @@ paths:
               fromHtml:
                 summary: Convert raw HTML
                 value:
-                  htmlCode: '<html><body><h1>Hello</h1></body></html>'
+                  htmlCode: <html><body><h1>Hello</h1></body></html>
                   pageSize: a4
       responses:
         '200':
@@ -70,21 +63,10 @@ paths:
         '550':
           description: Conversion failed (page unreachable or could not be loaded).
 components:
-  securitySchemes:
-    TokenAuth:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: >-
-        Secret API key sent as `Authorization: Token: api_YOURAPIKEYHERE`. A
-        publishable key (`api_public_...`) may be used for browser-side requests
-        when the calling domain is on the account's allowed-domains list.
   schemas:
     HtmlToPdfRequest:
       type: object
-      description: >-
-        HTML-to-PDF conversion request. Supply either `url` or `htmlCode`.
-        Pro-only fields are noted in their descriptions.
+      description: HTML-to-PDF conversion request. Supply either `url` or `htmlCode`. Pro-only fields are noted in their descriptions.
       properties:
         url:
           type: string
@@ -135,3 +117,9 @@ components:
         lang:
           type: string
           description: Language hint for rendering (e.g. en).
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Secret API key sent as `Authorization: Token: api_YOURAPIKEYHERE`. A publishable key (`api_public_...`) may be used for browser-side requests when the calling domain is on the account''s allowed-domains list.'
