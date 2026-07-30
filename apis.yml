@@ -8,7 +8,20 @@ description: Sejda provides online and desktop tools for editing and manipulatin
   api.sejda.com; the broader merge/split/OCR task set is delivered through the web
   and desktop apps and through the open-source Sejda SDK and sejda-console (Java,
   AGPLv3), not a hosted task API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sejda.png
 tags:
 - PDF
 - Document Conversion
@@ -19,30 +32,6 @@ created: '2026-06-25'
 modified: '2026-06-25'
 specificationVersion: '0.19'
 apis:
-- aid: sejda:sejda-html-to-pdf-api
-  name: Sejda HTML to PDF API
-  tags:
-  - HTML to PDF
-  - Conversion
-  - REST
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.sejda.com/developers
-  baseURL: https://api.sejda.com/v2
-  properties:
-  - url: https://www.sejda.com/developers
-    type: Documentation
-  - url: https://www.sejda.com/html-pdf-api
-    type: Documentation
-  - url: openapi/sejda-openapi.yml
-    type: OpenAPI
-  - url: collections/sejda.postman_collection.json
-    type: PostmanCollection
-  - url: collections/sejda.opencollection.json
-    type: OpenCollection
-  description: The only documented Sejda hosted REST API. Converts a URL or raw HTML
-    to a PDF document via POST https://api.sejda.com/v2/html-pdf with a JSON body,
-    authenticated with a Token (or publishable) API key. Sejda explicitly states it
-    does not offer hosted API access to its other PDF tools (e.g. merge, compress).
 - aid: sejda:sejda-pdf-tools
   name: Sejda PDF Tools (Web and Desktop)
   tags:
@@ -59,10 +48,10 @@ apis:
     type: Documentation
   - url: https://www.sejda.com/help
     type: Documentation
-  description: Sejda's full PDF task catalog - merge, split, compress, convert (Office/HTML
-    to PDF, PDF to images), edit, watermark, OCR, and fill forms - delivered as online
-    (browser) and desktop applications. These tasks are NOT exposed as a hosted REST
-    API; only HTML-to-PDF has a documented API.
+  description: >-
+    Sejda's full PDF task catalog - merge, split, compress, convert (Office/HTML to PDF, PDF to images),
+    edit, watermark, OCR, and fill forms - delivered as online (browser) and desktop applications. These
+    tasks are NOT exposed as a hosted REST API; only HTML-to-PDF has a documented API.
 - aid: sejda:sejda-sdk
   name: Sejda SDK
   tags:
@@ -79,10 +68,10 @@ apis:
     type: SourceCode
   - url: https://github.com/torakiki/sejda/wiki
     type: Documentation
-  description: Open-source (AGPLv3) Java library for PDF manipulation - merge, split,
-    rotate, encrypt, watermark, and more - built on SAMBox (a maintained PDFBox fork).
-    This is an embeddable code library, not a hosted network API; a commercial Pro
-    license is available for non-AGPL use.
+  description: >-
+    Open-source (AGPLv3) Java library for PDF manipulation - merge, split, rotate, encrypt, watermark,
+    and more - built on SAMBox (a maintained PDFBox fork). This is an embeddable code library, not a hosted
+    network API; a commercial Pro license is available for non-AGPL use.
 - aid: sejda:sejda-console
   name: Sejda Console
   tags:
@@ -99,9 +88,28 @@ apis:
     type: Documentation
   - url: https://github.com/torakiki/sejda
     type: SourceCode
-  description: Command-line shell over the Sejda SDK for running PDF tasks (merge,
-    split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial
-    sejda-console-pro build exists. This is a local CLI tool, not a hosted API.
+  description: >-
+    Command-line shell over the Sejda SDK for running PDF tasks (merge, split, etc.) from a terminal or
+    scripts. Requires a Java runtime. A commercial sejda-console-pro build exists. This is a local CLI
+    tool, not a hosted API.
+- aid: sejda:sejda-html-to-pdf-api
+  name: Sejda HTML to PDF API
+  description: The HTML to PDF API from Sejda — 1 operation(s) for html to pdf.
+  humanURL: https://www.sejda.com/developers
+  baseURL: https://api.sejda.com/v2
+  tags:
+  - HTML to PDF
+  properties:
+  - type: OpenAPI
+    url: openapi/sejda-html-to-pdf-api-openapi.yml
+  - type: Documentation
+    url: https://www.sejda.com/developers
+  - type: Documentation
+    url: https://www.sejda.com/html-pdf-api
+  - type: PostmanCollection
+    url: collections/sejda.postman_collection.json
+  - type: OpenCollection
+    url: collections/sejda.opencollection.json
 common:
 - type: AgenticAccess
   url: agentic-access/sejda-agentic-access.yml
