@@ -1,0 +1,14 @@
+{
+  "provider": "sejda",
+  "sources": [
+    "sejda-html-to-pdf-api-openapi.yml"
+  ],
+  "outputs": [
+    "sejda-html-to-pdf-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
