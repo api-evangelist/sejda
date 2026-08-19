@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sejda HTML to PDF API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTML to PDF",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert a URL or HTML to a PDF document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sejda.com/v2/html-pdf",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Renders the supplied URL or raw HTML and returns the generated PDF as a binary stream. Provide either `url` or `htmlCode`. Some parameters are Pro-only and return HTTP 450 on free accounts. The generated PDF must be smaller than 50MB."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
