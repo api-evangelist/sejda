@@ -57,6 +57,11 @@ apis:
   tags:
   - SDK
   - Java
+  - Open-Source
+  - PDF Manipulation
+  tags_raw:
+  - SDK
+  - Java
   - Open Source
   - PDF Manipulation
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -75,6 +80,11 @@ apis:
 - aid: sejda:sejda-console
   name: Sejda Console
   tags:
+  - CLI
+  - Java
+  - Open-Source
+  - PDF Manipulation
+  tags_raw:
   - CLI
   - Java
   - Open Source
