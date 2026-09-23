@@ -1,7 +1,7 @@
 {
   "provider": "sejda",
   "sources": [
-    "sejda-html-to-pdf-api-openapi.yml"
+    "_original/sejda-openapi.yml"
   ],
   "outputs": [
     "sejda-html-to-pdf-api-openapi.yml"
@@ -9,6 +9,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sejda-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "sejda-openapi.yml: declared missing tag: HTML to PDF",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "sejda-html-to-pdf-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
