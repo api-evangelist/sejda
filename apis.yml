@@ -9,17 +9,20 @@ description: Sejda provides online and desktop tools for editing and manipulatin
   and desktop apps and through the open-source Sejda SDK and sejda-console (Java,
   AGPLv3), not a hosted task API.
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - torakiki/sejda
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -70,13 +73,14 @@ apis:
   tags:
   - SDK
   - Java
-  - Open-Source
+  - Open Source
   - PDF Manipulation
   tags_raw:
   - SDK
   - Java
   - Open Source
   - PDF Manipulation
+  - Open-Source
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://sejda.org/
   properties:
@@ -95,13 +99,14 @@ apis:
   tags:
   - CLI
   - Java
-  - Open-Source
+  - Open Source
   - PDF Manipulation
   tags_raw:
   - CLI
   - Java
   - Open Source
   - PDF Manipulation
+  - Open-Source
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://sejda.org/download
   properties:
