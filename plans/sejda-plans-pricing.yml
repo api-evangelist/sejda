@@ -214,3 +214,86 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  - subscription
+  units:
+  - period
+  - seat
+  plans:
+  - name: HTML to PDF API - Starter
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - hour
+  - name: HTML to PDF API - Professional
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - hour
+  - name: HTML to PDF API - Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - hour
+  - name: HTML to PDF API - Enterprise
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - hour
+    - month
+  - name: Sejda Apps - Free
+    access: free
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Sejda Apps - Web Week Pass
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - week
+  - name: Sejda Apps - Web Monthly
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - month
+  - name: Sejda Apps - Desktop+Web Annual
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - year
+  - name: Sejda SDK / Console - Open Source
+    access: free
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - one-time
