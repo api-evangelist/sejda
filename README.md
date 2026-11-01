@@ -1,4 +1,4 @@
-# Sejda (sejda)
+# Sejda
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,113 +66,120 @@
 
 Sejda provides online and desktop tools for editing and manipulating PDF documents - merge, split, compress, convert, edit, watermark, OCR, and fill forms. Its only documented hosted REST API is the HTML-to-PDF conversion API at api.sejda.com; the broader merge/split/OCR task set is delivered through the web and desktop apps and through the open-source Sejda SDK and sejda-console (Java, AGPLv3), not a hosted task API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/sejda/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sejda/refs/heads/main/apis.yml)
+**Areas:** PDF · Document Conversion · HTML to PDF · PDF Editing · OCR
 
-## Tags
+## Sejda on APIs.io
 
-- PDF
-- Document Conversion
-- HTML to PDF
-- PDF Editing
-- OCR
+Everything profiled for Sejda is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sejda/](https://apis.io/providers/sejda/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [Sejda PDF Tools (Web and Desktop)](https://apis.io/apis/sejda/sejda-pdf-tools/) — Sejda's full PDF task catalog - merge, split, compress, convert (Office/HTML to PDF, PDF to images), edit, watermark, OCR, and fill forms - delivered as…
+- [Sejda SDK](https://apis.io/apis/sejda/sejda-sdk/) — Open-source (AGPLv3) Java library for PDF manipulation - merge, split, rotate, encrypt, watermark, and more - built on SAMBox (a maintained PDFBox fork).…
+- [Sejda Console](https://apis.io/apis/sejda/sejda-console/) — Command-line shell over the Sejda SDK for running PDF tasks (merge, split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial…
+- [Sejda HTML to PDF API](https://apis.io/apis/sejda/sejda-html-to-pdf-api/) — The HTML to PDF API from Sejda — 1 operation(s) for html to pdf.
 
-## APIs
+### Published properties
 
-### Sejda HTML to PDF API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The only documented Sejda hosted REST API. Converts a URL or raw HTML to a PDF document via POST https://api.sejda.com/v2/html-pdf with a JSON body, authenticated with a Token (or publishable) API key. Sejda explicitly states it does not offer hosted API access to its other PDF tools (e.g. merge, compress).
+#### Agentic access (1)
 
-- **Human URL:** [https://www.sejda.com/developers](https://www.sejda.com/developers)
-- **Base URL:** `https://api.sejda.com/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Sejda Agentic Access](https://apis.io/agentic-access/sejda/sejda-agentic-access/)
 
-- HTML to PDF
-- Conversion
-- REST
+#### Collections (2)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.sejda.com/developers)
-- [Documentation](https://www.sejda.com/html-pdf-api)
-- [OpenAPI](openapi/sejda-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sejda.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sejda.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Sejda HTML to PDF API](https://apis.io/collections/sejda/open-sejda/)
+- [Sejda HTML to PDF API](https://apis.io/collections/sejda/open-sejda-html-to-pdf-api/)
 
-### Sejda PDF Tools (Web and Desktop)
+#### Security (3)
 
-Sejda's full PDF task catalog - merge, split, compress, convert (Office/HTML to PDF, PDF to images), edit, watermark, OCR, and fill forms - delivered as online (browser) and desktop applications. These tasks are NOT exposed as a hosted REST API; only HTML-to-PDF has a documented API.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.sejda.com/](https://www.sejda.com/)
+- [Sejda Authentication](https://apis.io/security/sejda/sejda-authentication/)
+- [Sejda Domain Security](https://apis.io/security/sejda/sejda-domain-security/)
+- [Sejda Vulnerability Disclosure](https://apis.io/security/sejda/sejda-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- PDF Editing
-- Merge
-- Split
-- Compress
-- Watermark
-- OCR
+Published plans, tiers and prices.
 
-#### Properties
+- [Sejda Plans Pricing](https://apis.io/plans/sejda/sejda-plans-pricing/)
 
-- [Documentation](https://www.sejda.com/)
-- [Documentation](https://www.sejda.com/help)
+#### Rate limits (1)
 
-### Sejda SDK
+Published request limits.
 
-Open-source (AGPLv3) Java library for PDF manipulation - merge, split, rotate, encrypt, watermark, and more - built on SAMBox (a maintained PDFBox fork). This is an embeddable code library, not a hosted network API; a commercial Pro license is available for non-AGPL use.
+- [Sejda Rate Limits](https://apis.io/rate-limits/sejda/sejda-rate-limits/)
 
-- **Human URL:** [https://sejda.org/](https://sejda.org/)
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- SDK
-- Java
-- Open Source
-- PDF Manipulation
+- [Sejda Finops](https://apis.io/finops/sejda/sejda-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://sejda.org/)
-- [Source Code](https://github.com/torakiki/sejda)
-- [Documentation](https://github.com/torakiki/sejda/wiki)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Sejda Console
-
-Command-line shell over the Sejda SDK for running PDF tasks (merge, split, etc.) from a terminal or scripts. Requires a Java runtime. A commercial sejda-console-pro build exists. This is a local CLI tool, not a hosted API.
-
-- **Human URL:** [https://sejda.org/download](https://sejda.org/download)
-
-#### Tags
-
-- CLI
-- Java
-- Open Source
-- PDF Manipulation
-
-#### Properties
-
-- [Documentation](https://sejda.org/download)
-- [Documentation](https://github.com/torakiki/sejda/wiki)
-- [Source Code](https://github.com/torakiki/sejda)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/sejda-pdf)
-- [LinkedIn](https://www.linkedin.com/company/sejda)
 - [Website](https://www.sejda.com)
 - [Documentation](https://www.sejda.com/developers)
-- [Plans](plans/sejda-plans-pricing.yml)
-- [Rate Limits](rate-limits/sejda-rate-limits.yml)
-- [Fin Ops](finops/sejda-finops.yml)
+- [Blog](https://www.sejda.com/blog/rss)
+- [GitHub](https://github.com/sejda-pdf)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 52.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sejda/](https://apis.io/providers/sejda/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sejda: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sejda/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
